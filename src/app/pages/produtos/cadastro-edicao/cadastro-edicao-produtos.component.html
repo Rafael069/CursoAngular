@@ -1,0 +1,77 @@
+@if (id) {
+    <my-title title="Editar Produto"></my-title>
+}
+@else {
+    <my-title title="Cadastrar Produto"></my-title>
+}
+
+<hr>
+<form [formGroup]="produtoForm" (submit)="cadastrarProduto()">
+    <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                <label for="nomeProduto" class="form-label">Nome Produto</label>
+                <input type="text" 
+                    class="form-control" 
+                    id="nomeProduto"
+                    formControlName="nomeProduto"
+                    maxlength="50" 
+                    size="50">
+                @if (produtoForm.get('nomeProduto')?.touched && produtoForm.get('nomeProduto')?.errors)
+                {              
+                        <div class="form-text text-danger">Campo Obrigatório.</div>
+                }
+             </div>
+        </div>
+        <div class="col">
+            <div class="mb-3">
+                <label for="codigoBarras" class="form-label">Codigo Barras</label>
+                <input type="text" 
+                    class="form-control" 
+                    id="codigoBarras"
+                    formControlName="codigoBarras"
+                    (keydown)="onKeyDownCodigoBarras($event)"
+                    maxlength="13" 
+                    size="13">
+                @if (produtoForm.get('codigoBarras')?.errors && produtoForm.get('codigoBarras')?.touched) {
+                    <div class="form-text text-danger">Código de Barras é Obrigatório e deve ter 13 dígitos.</div>
+                }
+             </div>
+        </div>
+        <div class="col">
+            <div class="mb-3">
+                <label for="quantidade" class="form-label">Quantidade</label>
+                <input type="text" 
+                    class="form-control" 
+                    id="quantidade"
+                    formControlName="quantidade"
+                    (keydown)="onKeyDownCodigoBarras($event)">
+                @if (produtoForm.get('quantidade')?.touched && produtoForm.get('quantidade')?.errors)
+                {              
+                    <div class="form-text text-danger">Quantidade deve ser maior ou igual a zero.</div>
+                }
+             </div>
+        </div>
+        <div class="col">
+            <div class="mb-3">
+                <label for="preco" class="form-label">Preço</label>
+                <input type="number" 
+                    class="form-control" 
+                    id="preco"
+                    formControlName="preco">
+                @if (produtoForm.get('preco')?.touched && produtoForm.get('preco')?.errors)
+                {              
+                    <div class="form-text text-danger">Preço deve ser maior ou igual a zero.</div>
+                }
+             </div>
+        </div>
+    </div>
+    <a class="btn btn-secondary" routerLink="/produtos" style="margin-right: 10px;">Voltar</a>
+    @if (id)
+    {
+        <button type="submit" class="btn btn-primary" [disabled]="produtoForm.invalid">Alterar</button>
+    }
+    @else {
+        <button type="submit" class="btn btn-primary" [disabled]="produtoForm.invalid">Cadastrar</button>
+     }
+ </form>

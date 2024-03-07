@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CadastroEdicaoComponent } from './cadastro-edicao.component';
+import { PageTitleComponent } from './page-title.component';
 
-describe('CadastroEdicaoComponent', () => {
-  let component: CadastroEdicaoComponent;
-  let fixture: ComponentFixture<CadastroEdicaoComponent>;
+describe('PageTitleComponent', () => {
+  let component: PageTitleComponent;
+  let fixture: ComponentFixture<PageTitleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CadastroEdicaoComponent]
+      imports: [PageTitleComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CadastroEdicaoComponent);
+    fixture = TestBed.createComponent(PageTitleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

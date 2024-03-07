@@ -1,1 +1,30 @@
-<p>listagem usuarios works!</p>
+
+  <my-title title="Usuários"></my-title>
+  <hr>
+  <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Idade</th>
+          <th scope="col">Status</th>
+          <th >Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (usuario of usuarios; track $index) {
+          <tr>
+            <th scope="row">{{usuario.id}}</th>
+            <td>{{usuario.nome}}</td>
+            <td>{{usuario.idade}}</td>
+            <td>{{usuario.ativo ? "Ativo" : "Desativado"}}</td>
+            <td>
+              <button type="button" class="btn btn-danger btn-sm" (click)="removerUsuario(usuario.id || 0)">Remover</button>
+              <a [routerLink]="'/usuarios/editar/' + usuario.id"  
+                  class="btn btn-secondary btn-sm ms-2">Editar</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    <a class="btn btn-dark" routerLink="/usuarios/cadastrar">Cadastrar</a>

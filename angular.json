@@ -1,9 +1,10 @@
+
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "aula-1-treinamento": {
+    "treinamento-angular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +14,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/aula-1-treinamento",
+            "outputPath": "dist/treinamento-angular",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -25,14 +26,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": [
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "aula-1-treinamento:build:production"
+              "buildTarget": "treinamento-angular:build:production"
             },
             "development": {
-              "buildTarget": "aula-1-treinamento:build:development"
+              "buildTarget": "treinamento-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "aula-1-treinamento:build"
+            "buildTarget": "treinamento-angular:build"
           }
         },
         "test": {
@@ -89,19 +89,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/@popperjs/core/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ]
+            "scripts": []
           }
         }
       }
     }
   },
   "cli": {
-    "analytics": "a98b84d9-543e-47dd-bdfb-4b7c5825bceb"
+    "analytics": false
   }
 }
+

@@ -1,0 +1,38 @@
+
+@if (id) {
+    <my-title title="Editar Usuário"></my-title>
+}
+@else {
+    <my-title title="Cadastrar Usuário"></my-title>
+}
+
+<hr>
+<form [formGroup]="usuarioForm" (submit)="cadastrarUsuario()">
+    <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome"
+                    formControlName="nome">
+                @if (usuarioForm.get('nome')?.errors && usuarioForm.get('nome')?.touched) {
+                    <div class="form-text text-danger">Campo Obrigatório.</div>
+                }
+             </div>
+        </div>
+        <div class="col">
+            <div class="mb-3">
+                <label for="idade" class="form-label">Idade</label>
+                <input type="number" class="form-control" id="idade"
+                    formControlName="idade">
+             </div>
+        </div>
+    </div>
+    @if (id)
+    {
+        <button type="submit" class="btn btn-primary" [disabled]="usuarioForm.invalid">Alterar</button>
+    }
+    @else {
+        <button type="submit" class="btn btn-primary" [disabled]="usuarioForm.invalid">Cadastrar</button>
+     }
+     <a class="btn btn-secondary" routerLink="/usuarios" style="margin-left: 10px;">Voltar</a>
+</form>

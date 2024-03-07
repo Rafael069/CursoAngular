@@ -1,1 +1,34 @@
-<p>listagem produtos works!</p>
+<my-title title="Produtos"></my-title>
+<hr>
+<table class="table">
+    <thead class="table-secondary">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome Produto</th>
+        <th scope="col">Código de Barras</th>
+        <th scope="col" style="text-align: right; padding-right: 80px;" >Quantidade</th>
+        <th scope="col" style="text-align: right; padding-right: 80px;" >Preço</th>
+        <th scope="col">Status</th>
+        <th >Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (produto of produtos; track $index) {
+        <tr>
+          <th scope="row">{{produto.id}}</th>
+          <td>{{produto.nomeProduto}}</td>
+          <td>{{produto.codigoBarras}}</td>
+          <td style="text-align: right; padding-right: 40px;" >{{produto.quantidade | number}}</td>
+          <td style="text-align: right; padding-right: 40px;"  class="number">{{produto.preco | currency}}</td>
+          <td>{{produto.ativo ? "Ativo" : "Desativado"}}</td>
+          <td>
+            <button type="button" class="btn btn-warning btn-sm" (click)="removerProduto(produto.id || 0)">Remover</button>
+            <a [routerLink]="'/produtos/editar/' + produto.id"  
+                class="btn btn-secondary btn-sm ms-2">Editar</a>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+  <a class="btn btn-secondary" routerLink="/produtos/cadastrar">Cadastrar</a>
+
